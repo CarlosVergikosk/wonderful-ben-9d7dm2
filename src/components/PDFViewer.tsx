@@ -50,7 +50,7 @@ export default function PDFViewer({ index }: Props): JSX.Element {
   const setupInstance = React.useCallback(async () => {
     WebViewer(
       {
-        path: "webviewer/A",
+        path: "public/webviewer",
         initialDoc: PDFS[index],
         disableLogs: true,
         licenseKey: "FE9249dEsSIMTNnvALwC",

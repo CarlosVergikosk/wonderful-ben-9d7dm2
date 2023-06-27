@@ -29,6 +29,10 @@ const App: React.FC = () => {
         onOk={handleOk}
         onCancel={handleCancel}
         destroyOnClose
+        width="800px"
+        bodyStyle={{
+          height: "1000px",
+        }}
       >
         <PDFViewer index={1} />
       </Modal>
