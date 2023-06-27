@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
-import PDFViewer from "./components/PDFViewer";
+import PDFViewer, { PDFS } from "./components/PDFViewer";
 
 const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,7 +34,7 @@ const App: React.FC = () => {
           height: "1000px",
         }}
       >
-        <PDFViewer index={1} />
+        <PDFViewer index={Math.floor(Math.random() * PDFS.length)} />
       </Modal>
     </>
   );

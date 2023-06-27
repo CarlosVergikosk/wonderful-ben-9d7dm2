@@ -1,7 +1,7 @@
 import WebViewer, { getInstance } from "@pdftron/pdfjs-express-viewer";
 import React from "react";
 
-const PDFS = [
+export const PDFS = [
   "/src/pdfs/A.pdf",
   "/src/pdfs/B.pdf",
   "/src/pdfs/C.pdf",
@@ -36,7 +36,7 @@ export const WebViewerContext = React.createContext<{
 }>({});
 
 interface Props {
-  index: string;
+  index: number;
 }
 
 export default function PDFViewer({ index }: Props): JSX.Element {
@@ -67,12 +67,6 @@ export default function PDFViewer({ index }: Props): JSX.Element {
     });
   }, [index]);
 
-  const updateInstance = React.useCallback(async () => {
-    instance.UI.loadDocument(PDFS[index], {
-      documentId: index,
-    });
-  }, [index, instance]);
-
   React.useEffect(() => {
     return () => {
       if (!instance) {
@@ -89,8 +83,6 @@ export default function PDFViewer({ index }: Props): JSX.Element {
   const handleindexChange = React.useCallback(async () => {
     const instance = getInstance();
 
-    console.log({ instance });
-
     if (instance) {
       instance.UI.closeDocument();
       await instance.UI.dispose();
@@ -102,7 +94,6 @@ export default function PDFViewer({ index }: Props): JSX.Element {
 
   React.useEffect(() => {
     handleindexChange();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index]);
 
   return React.useMemo(() => {
