@@ -53,6 +53,7 @@ export default function PDFViewer({ index }: Props): JSX.Element {
         path: "webviewer/A",
         initialDoc: PDFS[index],
         disableLogs: true,
+        licenseKey: "FE9249dEsSIMTNnvALwC",
       },
       viewer.current
     ).then((instance: WebViewerInstance) => {
